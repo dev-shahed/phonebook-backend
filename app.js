@@ -5,18 +5,19 @@ let persons = require("./data");
 const morgan = require("morgan");
 const cors = require("cors");
 app.use(cors());
-app.use(express.static("dist"));
-// app.use(morgan("dev"));
+const path = require("path");
 
 morgan.token("body", (request) => JSON.stringify(request.body));
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms :body")
 );
 
-//limiting on get request.
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, "dist")));
 
-app.get("/", (request, response) => {
-  response.send("Hello World");
+// Handle all other routes by serving the index.html file
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 //retrieve all resource...
