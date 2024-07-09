@@ -16,7 +16,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "dist")));
 
 // Handle all other routes by serving the index.html file
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
@@ -104,5 +104,5 @@ app.post("/api/persons", (request, response) => {
   response.json(person);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => `Server running on port ${port} 🔥`);
