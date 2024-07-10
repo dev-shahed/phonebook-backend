@@ -66,11 +66,8 @@ app.delete("/api/persons/:id", (request, response) => {
       .json({ message: `Person with id ${id} not found!` });
   }
   try {
-    const personName = person.name;
     persons = persons.filter((person) => person.id !== id);
-    response
-      .status(204)
-      .json({ message: `person ${personName} deleted successfully!` });
+    return response.status(204).end();
   } catch (error) {
     console.error("Error occurred:", error);
     response.status(500).json({ message: "An error occurred" });
@@ -104,5 +101,5 @@ app.post("/api/persons", (request, response) => {
   response.json(person);
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => `Server running on port ${port} 🔥`);
