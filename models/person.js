@@ -37,7 +37,7 @@ const phonebookSchema = new mongoose.Schema({
   },
 })
 
-//modify the json output
+//modify the json output _id change to id and delete __v
 phonebookSchema.set('toJSON', {
   transform: (doc, objReturn) => {
     objReturn.id = doc._id.toString()
