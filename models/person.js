@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 // Database connection
-const password = process.argv[2]
-const url = process.env.MONGODB_URL.replace('<password>', password)
+const url = process.env.MONGODB_URL;
 
 if (!url) {
   console.error('MONGODB_URL environment variable is missing')

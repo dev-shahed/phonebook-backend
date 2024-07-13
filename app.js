@@ -19,13 +19,7 @@ app.use(
 // Static file serving
 app.use(express.static(path.join(__dirname, 'dist')))
 
-// Routes
-
-// Serve the application frontend..
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
-})
-
+// Routes...
 // Retrieve all persons
 app.get('/api/persons', async (req, res, next) => {
   await Phonebook.find({})
@@ -109,13 +103,17 @@ app.put('/api/persons/:id', async (request, response, next) => {
     name: body.name,
     number: body.number,
   }
-
   const id = request.params.id
   await Phonebook.findByIdAndUpdate(id, person, { new: true })
     .then((updatedPerson) => {
       response.json(updatedPerson)
     })
     .catch((error) => next(error))
+})
+
+// Serve the application frontend..
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
 const unknownEndpoint = (req, res) => {
