@@ -3,14 +3,15 @@ const app = express()
 const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
-require('dotenv').config()
 const Phonebook = require('./models/person')
 const errorHandler = require('./utils/errorHandler')
+
 
 // Middleware setup
 app.use(express.json())
 app.use(cors())
 app.use(morgan('tiny'))
+
 morgan.token('body', (req) => JSON.stringify(req.body))
 app.use(
   morgan(':method :url :status :res[content-length] - :response-time ms :body')

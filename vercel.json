@@ -1,16 +1,19 @@
 {
-    "version": 2,
-    "builds": [
-     {
+  "version": 2,
+  "builds": [
+    {
       "src": "app.js",
       "use": "@vercel/node",
       "config": { "includeFiles": ["dist/**"] }
-     }
-    ],
-    "routes": [
-     {
+    }
+  ],
+  "env": {
+    "MONGODB_URL": "@mongodb_url"
+  },
+  "routes": [
+    {
       "src": "/(.*)",
       "dest": "app.js"
-     }
-    ]
-   }
+    }
+  ]
+}
