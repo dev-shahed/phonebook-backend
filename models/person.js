@@ -16,7 +16,7 @@ mongoose
     process.exit(1)
   })
 
-// Define the schema and model
+// Define the schema and model..
 const phonebookSchema = new mongoose.Schema({
   name: {
     type: String,
