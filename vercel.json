@@ -7,9 +7,6 @@
       "config": { "includeFiles": ["dist/**"] }
     }
   ],
-  "env": {
-    "MONGODB_URL": "@url"
-  },
   "routes": [
     {
       "src": "/(.*)",
