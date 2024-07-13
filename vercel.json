@@ -8,7 +8,7 @@
     }
   ],
   "env": {
-    "MONGODB_URL": "@mongodb_url"
+    "MONGODB_URL": "@url"
   },
   "routes": [
     {
